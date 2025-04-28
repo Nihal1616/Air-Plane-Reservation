@@ -7,6 +7,7 @@
 
 using namespace std;
 class Flight;
+
 class Passenger {
     string name;
     int age;
@@ -70,4 +71,53 @@ public:
             cout << "Ticket booked! Seat Number: " << p->seatNumber << "\n";
         }
     }
+
+
+    void cancelTicket(string name) {
+        Passenger* curr = passengerListHead;
+        Passenger* prev = nullptr;
+
+        while (curr != nullptr && curr->name != name) {
+            prev = curr;
+            curr = curr->next;
+        }
+
+        if (!curr) {
+            cout << "Passenger not found.\n";
+            return;
+        }
+
+        // Free seat
+        if (curr->seatClass == "Economy")
+            economySeats[curr->seatNumber - 1] = false;
+        else
+            businessSeats[curr->seatNumber - 1] = false;
+
+        // Remove from linked list
+        if (prev)
+            prev->next = curr->next;
+        else
+            passengerListHead = curr->next;
+
+        cancelStack.push(curr);
+        cout << "Ticket for " << name << " canceled.\n";
+
+        if (!economyWaitlist.empty()) {
+            string waitName = economyWaitlist.front();
+            economyWaitlist.pop();
+            bookTicket(waitName, 30, "Unknown", "Economy"); 
+        }
+    }
+
+    void undoCancel() {
+        if (cancelStack.empty()) {
+            cout << "No recent cancellations to undo.\n";
+            return;
+        }
+        Passenger* lastCanceled = cancelStack.top();
+        cancelStack.pop();
+        cout << "Restoring ticket for " << lastCanceled->name << "...\n";
+        bookTicket(lastCanceled->name, lastCanceled->age, lastCanceled->gender, lastCanceled->seatClass);
+    }
+
 };
