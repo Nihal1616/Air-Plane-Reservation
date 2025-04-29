@@ -120,4 +120,68 @@ public:
         bookTicket(lastCanceled->name, lastCanceled->age, lastCanceled->gender, lastCanceled->seatClass);
     }
 
+    void checkAvailability(){
+        int freeEco = 0, freeBus = 0;
+        for (bool seat : economySeats)
+            if (!seat) ++freeEco;
+        for (bool seat : businessSeats)
+            if (!seat) ++freeBus;
+
+        cout << "Available Seats - Economy: " << freeEco << ", Business: " << freeBus << "\n";
+
+    }
+
+    void showPassengers() {
+        
+    }
+
+
 };
+
+
+int main() {
+    unordered_map<string, Flight*> flights;
+    flights["AI101"] = new Flight("AI101", 5, 2); 
+
+    int choice;
+    string fname = "AI101";
+
+    do {
+        cout << "\n=== Airline Reservation Menu ===\n";
+        cout << "1. Book Ticket\n2. Cancel Ticket\n3. Check Availability\n4. Show Passengers\n5. Undo Cancel\n0. Exit\n";
+        cin >> choice;
+
+        string name, gender, cls;
+        int age;
+
+        switch (choice) {
+            case 1:
+                cout << "Enter Name, Age, Gender, Class (Economy/Business): ";
+                cin >> name >> age >> gender >> cls;
+                flights[fname]->bookTicket(name, age, gender, cls);
+                break;
+            case 2:
+                cout << "Enter Passenger Name to Cancel: ";
+                cin >> name;
+                flights[fname]->cancelTicket(name);
+                break;
+            case 3:
+                flights[fname]->checkAvailability();
+                break;
+            case 4:
+                flights[fname]->showPassengers();
+                break;
+            case 5:
+                flights[fname]->undoCancel();
+                break;
+            case 0:
+                cout << "Thank you!\n";
+                break;
+            default:
+                cout << "Invalid option.\n";
+        }
+    } while (choice != 0);
+
+    return 0;
+}
+
