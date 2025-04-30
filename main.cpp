@@ -132,6 +132,13 @@ public:
     }
 
     void showPassengers() {
+        Passenger* temp = passengerListHead;
+        cout << "Passenger List for Flight " << flightNumber << ":\n";
+        while (temp != nullptr) {
+            cout << "- " << temp->name << " | Seat: " << temp->seatNumber
+                 << " | Class: " << temp->seatClass << "\n";
+            temp = temp->next;
+        }
         
     }
 
