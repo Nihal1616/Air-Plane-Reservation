@@ -23,7 +23,15 @@ Features:
         o	The corresponding seat is freed (set to false in the seat vector).
         o	The passenger node is removed from the linked list.
         o	The canceled ticket is pushed onto a stack (stack<Passenger*>) to allow undo                     functionality.
-    •	If the canceled seat is in Economy, and the waitlist is not empty, the first person in the       queue is automatically assigned the newly freed seat using their name (with placeholder          age and gender).
+    •	If the canceled seat is in Economy, and the waitlist is not empty, the first person in the       queue is automatically assigned the             newly freed seat using their name (with placeholder age and gender).
+3. Undo Cancellation
+    •	This feature lets you undo the most recent ticket cancellation.
+    •	It pops the top passenger from the cancelStack and attempts to rebook them using the original booking details (name, age, gender, seat           class).
+    •	If a seat is available, the booking is restored, and the passenger is re-added to the list.
+    •	This feature is useful in scenarios of accidental cancellations.
+4. Check Seat Availability
+    •	Displays the current number of unbooked seats in both Economy and Business classes.
+    •	Internally, it counts the number of false entries in the economySeats and businessSeats vectors.
    
 
 
