@@ -32,6 +32,12 @@ Features:
 4. Check Seat Availability
     •	Displays the current number of unbooked seats in both Economy and Business classes.
     •	Internally, it counts the number of false entries in the economySeats and businessSeats vectors.
+
+5. Passenger List Display
+•	Shows a formatted list of all booked passengers for the current flight.
+•	Includes passenger name, seat number, and seat class.
+•	Uses simple iteration over the linked list to gather and display information.
+
    
 
 
