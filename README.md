@@ -38,6 +38,12 @@ Features:
 •	Includes passenger name, seat number, and seat class.
 •	Uses simple iteration over the linked list to gather and display information.
 
+6. Waitlist Handling (Economy Only)
+•	When all Economy seats are full, new booking requests are not rejected outright but instead added to a FIFO queue (queue<string>).
+•	Upon a cancellation in Economy class, the system checks the waitlist and auto-assigns the freed seat to the first person in the queue.
+•	This simulates real-life airline waitlist mechanics.
+•	This Airline Ticket Reservation System is a data-structure-rich C++ project that efficiently manages bookings, cancellations, waitlisting, and seat tracking for a flight, demonstrating practical use of linked lists, stacks, queues, vectors, and OOP—making it a strong foundational project for mastering real-world application of core programming concepts.
+
    
 
 
