@@ -7,7 +7,7 @@ Data Structures Used:
 •  Queue: To manage the waitlist in FIFO order.
 •  Stack: To store and undo canceled tickets.
 •  Vectors: To represent seat occupancy (true = booked, false = available).
-•  Unordered Map: For managing multiple flights (currently supports one flight for simplicity).
+•  Unordered Map: For managing multiple flights .
 
 Features:
 1. Ticket Booking
