@@ -7,11 +7,11 @@ Data Structures Used:
 •  Queue: To manage the waitlist in FIFO order.
 •  Stack: To store and undo canceled tickets.
 •  Vectors: To represent seat occupancy (true = booked, false = available).
-•  Unordered Map: For managing multiple flights .
+•  Unordered_ Map: For managing multiple flights .
 
 Features:
 1. Ticket Booking
-    •	Users can book a ticket by entering their name, age, gender, and seat class (Economy or           Business).
+    •	Users can book a ticket by entering their name, age, gender, and seatclass (Economy or           Business).
     •	The system assigns the first available seat in the requested class using a vector<bool> to       track occupancy.
     •	If no seats are available in Economy class, the passenger is added to a waitlist (a               queue<string>) instead of being rejected immediately.
     •	A Passenger node is created dynamically and added to a singly linked list representing the       current passenger list for that flight.
@@ -22,8 +22,8 @@ Features:
     •	On successful match:
         o	The corresponding seat is freed (set to false in the seat vector).
         o	The passenger node is removed from the linked list.
-        o	The canceled ticket is pushed onto a stack (stack<Passenger*>) to allow undo                     functionality.
-    •	If the canceled seat is in Economy, and the waitlist is not empty, the first person in the       queue is automatically assigned the             newly freed seat using their name (with placeholder age and gender).
+        o	The canceled ticket is pushed onto a stack (stack<Passenger*>) to allow undo functionality.
+    •	If the canceled seat is in Economy, and the waitlist is not empty, the first person in the queue is automatically assigned the newly freed seat using their name (with placeholder age and gender).
 3. Undo Cancellation
     •	This feature lets you undo the most recent ticket cancellation.
     •	It pops the top passenger from the cancelStack and attempts to rebook them using the original booking details (name, age, gender, seat           class).
