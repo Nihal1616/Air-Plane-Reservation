@@ -11,7 +11,7 @@ Data Structures Used:
 
 Features:
 1. Ticket Booking
-    •	Users can book a ticket by entering their name, age, gender, and seatclass (Economy or           Business).
+    •	Users can book a ticket by entering their name, age, gender and seatclass (Economy or           Business).
     •	The system assigns the first available seat in the requested class using a vector<bool> to       track occupancy.
     •	If no seats are available in Economy class, the passenger is added to a waitlist (a               queue<string>) instead of being rejected immediately.
     •	A Passenger node is created dynamically and added to a singly linked list representing the       current passenger list for that flight.
